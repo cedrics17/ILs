@@ -8,7 +8,10 @@ mass_dic = {
 	'N' : 13.607,
         'D' : 0.4,
         'P' : 30.974,
-        'Li': 6.941
+        'Li': 6.941,
+	'F' : 6.941,
+	'S' : 31.666,
+	'O' : 15.599
 }
 ## my functions
 def splitflux(filename,key): #filename is a variable that represents a string
