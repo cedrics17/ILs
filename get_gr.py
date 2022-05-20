@@ -14,18 +14,18 @@ import argparse
 
 parser         = argparse.ArgumentParser()
 
-# -b Begin -e End -t initial timestep -T temperature                                                                                  
+# -b Begin -e End -t initial timestep -T temperature 
+parser.add_argument("-p","--pair",dest="pair", help="pair")
 parser.add_argument("-b","--begin", dest= "begin", help=" First Snapshot")
 parser.add_argument("-e","--end", dest="end", help="last Snapshot")
 parser.add_argument("-T","--temperature",dest="temperature",help="temperature")
 args           = parser.parse_args()
 hours          = "6"
-repname        = "temperature"
+repname        = "_temperature"
 #temperatures   = [300.0, 307.595, 315.381, 323.365, 331.551, 339.945, 348.55, 357.374, 366.421, 375.697, 385.208, 394.959, 404.958, 415.209,425.72,436.497]                                                                                                                                      
 temperatures   = [300.0, 323.365,348.55, 404.958, 436.497]
 #348.55, 375.697, 404.958, 436.497]
 name_middle    = "_snapshot" # 750 snapshots from each trajectory
-ogpath         ="/projectnb/nonadmd/cedric17/proj2b_lammps/4-pair_P111-DCA/replica/SingleTraj_P111-DCA/"
 array          = []
 catatom        = 5 #change for cation reference atom
 anatom         = 8 #change for anion reference atom
@@ -37,14 +37,15 @@ snapshots_beg  = int(args.begin)
 snapshots_end  = int(args.end)
 timesteps      = 501
 temp           = float(args.temperature)
+pair           =args.pair
 
 os.chdir('../') #bring this back when running superscript
 
 
-os.chdir(repname+str(round(temp)))
+os.chdir(pair+repname+str(round(temp)))
 
 for i in range(snapshots_beg,snapshots_end):
-        out=open(ogpath+repname+str(round(temp))+'/gr'+str(i)+'.dat','w')
+        out=open(pair+repname+str(round(temp))+'/gr'+str(i)+'.dat','w')
         out.write('Distance (A)    Cat-Ani    Ani-Ani    Cat-Cat\n')
         pair,ani,cat,litcat,litani,litlit,saltcat,saltani,saltsalt,saltlit,boxs,catcount,anicount,litcount,saltcount=de.gofr('dump'+str(i)+'.lammpstrj',catatom,anatom,litatom,saltatom,key)
         dr=0.5*boxs/bins
