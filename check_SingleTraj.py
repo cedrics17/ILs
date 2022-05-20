@@ -1,26 +1,35 @@
-#Author: Cedric Salame                                                                                                                                                                                                                                                                            
-#Script Name: Check_SingleTraj.py                                                                                                                                                                                                                                                                 
-#Date Created:  May 20th 2022                                                                                                                                                                                                                                                                     
-#Last Mod Date:                                                                                                                                                                                                                                                                                   
-#Last Modification:                                                                                                                                                                                                                                                                               
+#Author: Cedric Salame                                                                                                                                                                                                                                                                           \
+                                                                                                                                                                                                                                                                                                  
+#Script Name: Check_SingleTraj.py                                                                                                                                                                                                                                                                \
+                                                                                                                                                                                                                                                                                                  
+#Date Created:  May 20th 2022                                                                                                                                                                                                                                                                    \
+                                                                                                                                                                                                                                                                                                  
+#Last Mod Date:                                                                                                                                                                                                                                                                                  \
+                                                                                                                                                                                                                                                                                                  
+#Last Modification:                                                                                                                                                                                                                                                                              \
+                                                                                                                                                                                                                                                                                                  
 
-#Program: Python 3                                                                                                                                                                                                                                                                                
+#Program: Python 3                                                                                                                                                                                                                                                                               \
+                                                                                                                                                                                                                                                                                                  
 import os
 import numpy as np
-#Description: This script will check if the Single Trajectory runs submitted with the array jobs ran and were correctly terminated.                                                                                                                                                               
+#Description: This script will check if the Single Trajectory runs submitted with the array jobs ran and were correctly terminated.                                                                                                                                                              \
+                                                                                                                                                                                                                                                                                                  
 hours          = "6"
 repname        = "temperature"
 temperatures   = [300.0, 323.365, 348.55, 375.697, 404.958, 436.497]
-name_middle    = "_snapshot" # 3000 snapshots from each trajectory                                                                                                                                                                                                                                
+name_middle    = "_snapshot" # 3000 snapshots from each trajectory                                                                                                                                                                                                                               \
+                                                                                                                                                                                                                                                                                                  
 ogpath         ="/projectnb/nonadmd/cedric17/proj2b_lammps/4-pair_P111-DCA/replica/SingleTraj_P111-DCA/"
 checkMark      ='Total wall time:'
-cores          = 8 # choose 4 8 16 28                                                                                                                                                                                                                                                             
+cores          = 8 # choose 4 8 16 28                                                                                                                                                                                                                                                            \
+                                                                                                                                                                                                                                                                                                  
 snaps          = 3000
 pair = "AC4DCAsaltTFSI"
 array  = []
 
 for temp in temperatures:
-		count=0
+    count=0
     os.chdir(pair+'_'+repname+str(round(temp)))
     outfile_sh=open("reSub_temperature"+str(round(temp))+".sh",'w')
     outfile_sh.write("#!/bin/sh -l\n")
@@ -40,11 +49,11 @@ for temp in temperatures:
         lastline=open("log"+str(i)+".lammps","r").readlines()[-1]
         if checkMark not in lastline:
             outfile_sh.write(filename)
-						count+=1
+            count+=1       
     outfile_sh.write(")\n")
     outfile_sh.write("#$ -t 1-"+str(count)+"\n")
-		outfile_sh.write("\n")
-		outfile_sh.write("module purge\n")
+    outfile_sh.write("\n")
+    outfile_sh.write("module purge\n")
     outfile_sh.write("module load openmpi/3.1.4_gnu-10.2.0\n")
     outfile_sh.write("module load lammps/29Sep2021\n")
     outfile_sh.write("\n")
@@ -58,4 +67,3 @@ for temp in temperatures:
     outfile_sh.write("\n")
     outfile_sh.close()
     os.chdir("../")
-		
