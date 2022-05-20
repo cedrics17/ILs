@@ -11,10 +11,8 @@ import withdrude_correlate as de
 
 #Description: This script will calculate correlation functions for every temperature and trajectory and average it on a temperature basis. It also returns the conductivity 
 hours          = "6"
-repname        = "temperature"
-#temperatures   = [300.0, 307.595, 315.381, 323.365, 331.551, 339.945, 348.55, 357.374, 366.421, 375.697, 385.208, 394.959, 404.958, 415.209,425.72,436.497]                                                                                                                                      
+repname        = "_temperature"
 temperatures   = [300.0, 323.365, 348.55, 375.697, 404.958, 436.497]
-#temperatures   =[436.497]
 name_middle    = "_snapshot" # 750 snapshots from each trajectory
 array          = []
 sum_array      = []
@@ -22,14 +20,17 @@ time_array     = []
 J              = []
 snapshots      = 6000
 timesteps      = 500
-ogpath         = '/projectnb/nonadmd/cedric17/proj2b_lammps/4-pair_P111-DCA/replica/SingleTraj_P111-DCA/'
+pair           ="AC4DCAsaltTFSI" #other options: AC4DCAneat,P111DCAneat,P101TFSIneat,AC4DCAsaltDCA,P111DCAsaltDCA,P101TFSIsaltDCA,AC4DCAsaltTFSI,AC4DCAsaltPF6,AC4DCAsaltDCAhalf,AC4DCAsaltTFSIhalf,AC4DCAsaltPF6half
+
+os.chdir("SingleTraj_"+pair)
+os.system("mkdir corr_functions")
 
 for temp in temperatures:
-        out=open(ogpath+'corr_functions/corr'+str(round(temp))+'.dat','w')
+        out=open('corr_functions/corr'+str(round(temp))+'.dat','w')
         out.write('Time (fs)   Javg ((e*Ang/fs)**2)\n')
         count=5
         print('currently working on '+str(temp))
-        os.chdir(repname+str(round(temp)))
+        os.chdir(pair+repname+str(round(temp)))
         file=open('corr1_1.dat','r').readlines()
         for j in range(1,len(file)):
                 array.append(float(file[j].strip().split()[1]))
@@ -42,7 +43,7 @@ for temp in temperatures:
                         array.append(float(file[m].strip().split()[1]))
                 sum_array=np.sum([sum_array,array],axis=0)
                 array=[]
-#        os.chdir('../')
+
         for i in range(2,snapshots+1):
 #                os.chdir(repname+str(round(temp))+name_middle+str(i))
                 for k in range(1,6):
