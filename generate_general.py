@@ -22,12 +22,15 @@ bundle_count   =0
 input_array    =[]
 batch_count    =16 #or 28 or 32
 chunkSize      =10
+pair           ="AC4DCAsaltTFSI" #other options: AC4DCAneat,P111DCAneat,P101TFSIneat,AC4DCAsaltDCA,P111DCAsaltDCA,P101TFSIsaltDCA,AC4DCAsaltTFSI,AC4DCAsaltPF6,AC4DCAsaltDCAhalf,AC4DCAsaltTFSIhalf,AC4DCAsaltPF6half
+runs           =6000
 
-os.mkdir('bundles')
-os.chdir('bundles')
+os.chdir("SingleTraj_"+pair)
+os.system('mkdir bundles_'+pair)
+os.chdir('bundles_'+pair)
 
 for temp in temperatures:
-    for j in range(1,6001,50):  
+    for j in range(1,runs+1,50):  
         input_array.append([str(temp),str(round(temp)),str(j)]) 
 
 length    =len(input_array)
