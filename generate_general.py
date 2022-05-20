@@ -59,18 +59,18 @@ for i in range(0,length, batch_count):
             outfile_sh.write("qsub bundle"+str(bundle_count+j+1)+".sh\n")
     if i >= end_count:
         for z in range(i,length):
-            outfile_sh.write("python ../get_gr.py -b "+input_array[z][2]+" -e "+str(int(input_array[z][2])+50)+" -T "+input_array[z][0]+' &\n')
+            outfile_sh.write("python ../get_gr.py -p " +pair+" -b "+input_array[z][2]+" -e "+str(int(input_array[z][2])+50)+" -T "+input_array[z][0]+' &\n')
     else:     
         for k in range(batch_count):
-            outfile_sh.write("python ../get_gr.py -b "+input_array[k+i][2]+" -e "+str(int(input_array[k+i][2])+50)+" -T "+input_array[k+i][0]+' &\n')
+            outfile_sh.write("python ../get_gr.py -p " +pair+" -b "+input_array[k+i][2]+" -e "+str(int(input_array[k+i][2])+50)+" -T "+input_array[k+i][0]+' &\n')
     outfile_sh.write("\n")
     outfile_sh.write("wait\n")
     if i >= end_count:
         for z in range(i,length):
-            outfile_sh.write("python ../get_flux.py -b "+input_array[z][2]+" -e "+str(int(input_array[z][2])+50)+" -T "+input_array[z][0]+' &\n')
+            outfile_sh.write("python ../get_flux.py -p " +pair+" -b "+input_array[z][2]+" -e "+str(int(input_array[z][2])+50)+" -T "+input_array[z][0]+' &\n')
     else:
         for k in range(batch_count):
-            outfile_sh.write("python ../get_flux.py -b "+input_array[k+i][2]+" -e "+str(int(input_array[k+i][2])+50)+" -T "+input_array[k+i][0]+' &\n')
+            outfile_sh.write("python ../get_flux.py -p " +pair+" -b "+input_array[k+i][2]+" -e "+str(int(input_array[k+i][2])+50)+" -T "+input_array[k+i][0]+' &\n')
     outfile_sh.write("\n")
     outfile_sh.write("wait\n")
     outfile_sh.write("exit 0\n")
