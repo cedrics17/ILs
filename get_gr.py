@@ -45,7 +45,7 @@ os.chdir('../') #bring this back when running superscript
 os.chdir(pair+repname+str(round(temp)))
 
 for i in range(snapshots_beg,snapshots_end):
-        out=open(pair+repname+str(round(temp))+'/gr'+str(i)+'.dat','w')
+        out=open('gr'+str(i)+'.dat','w')
         out.write('Distance (A)    Cat-Ani    Ani-Ani    Cat-Cat\n')
         pair,ani,cat,litcat,litani,litlit,saltcat,saltani,saltsalt,saltlit,boxs,catcount,anicount,litcount,saltcount=de.gofr('dump'+str(i)+'.lammpstrj',catatom,anatom,litatom,saltatom,key)
         dr=0.5*boxs/bins
