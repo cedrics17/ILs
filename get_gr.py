@@ -22,16 +22,10 @@ parser.add_argument("-T","--temperature",dest="temperature",help="temperature")
 args           = parser.parse_args()
 hours          = "6"
 repname        = "_temperature"
-#temperatures   = [300.0, 307.595, 315.381, 323.365, 331.551, 339.945, 348.55, 357.374, 366.421, 375.697, 385.208, 394.959, 404.958, 415.209,425.72,436.497]                                                                                                                                      
 temperatures   = [300.0, 323.365,348.55, 404.958, 436.497]
-#348.55, 375.697, 404.958, 436.497]
 name_middle    = "_snapshot" # 750 snapshots from each trajectory
 array          = []
-catatom        = 5 #change for cation reference atom
-anatom         = 8 #change for anion reference atom
-litatom        = 0
-saltatom       = 0
-key            = "neat"
+
 bins           = 200
 snapshots_beg  = int(args.begin)
 snapshots_end  = int(args.end)
@@ -50,6 +44,14 @@ pair_dic={"AC4DCAneat":{"catatom":9,"anatom":16,"litatom":0,"saltatom":0,"key","
           "AC4DCAsaltDCAhalf":{"catatom":9,"anatom":16,"litatom":19,"saltatom":0,"key","same salt"},
           "AC4DCAsaltTFSIhalf":{"catatom":9,"anatom":16,"litatom":19,"saltatom":20,"key","diff salt"},
           "AC4DCAsaltPF6half":{"catatom":9,"anatom":16,"litatom":19,"saltatom":21,"key","diff salt"}}
+
+
+catatom        = pair_dic[pair]["catatom"]
+anatom         = pair_dic[pair]["anatom"]
+litatom        = pair_dic[pair]["litatom"]
+saltatom       = pair_dic[pair]["saltatom"]
+key            = pair_dic[pair]["key"]
+
 
 os.chdir('../') #bring this back when running superscript
 
