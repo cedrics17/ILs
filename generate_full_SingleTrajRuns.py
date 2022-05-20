@@ -11,13 +11,16 @@ import numpy as np
 hours          = "6"
 repname        = "temperature" 
 temperatures   = [300.0, 307.595, 315.381, 323.365, 331.551, 339.945, 348.55, 357.374, 366.421, 375.697, 385.208, 394.959, 404.958, 415.209,425.72,436.497] 
-name_middle    = "_snapshot" # 3000 snapshots from each trajectory
-timestep_start = 7202500 # change this  
-timestep_end   = 37202500 #Change thi
+name_middle    = "_snapshot" 
+RunLength      = 37294000 # Get Total Run Length from log.lammps of REMD Run
+PostProcLength = 30000000 # change depending on run length
+EffRunLength   = np.floor((RunLength-50000)/100000)*100000
+timestep_start = int(EffRunLength - PostProcLength + 2500)
+timestep_end   = int(EffRunLength + 2500) 
 timestep_space = 10000
 timesteps      = np.arange(timestep_start,timestep_end+timestep_space,timestep_space)
 cores          = 8 # choose 4 8 16 28 
-snaps          = 3000
+snaps          = 3000 # change depending on run length 
 pair= "AC4DCAsaltTFSI" #Different options are defined in the dictionary below.
 
 Pair_Dic= { 'AC4DCAneat':{'Atoms':'1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18','Cores':'1 3 4 6 7 9 11 12 14 15 16 17 18', 'Drudes':'19 20 21 22 23 24 25 26 27 28 29 30 31','Cation':'1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 ','Anion': '16 17 18','Dump': 'C H C C H N C H C H C C H C C N C N D D D D D D D D D D D D D', 'FixDrude': 'C N C C N C C N C N C C N C C C C C D D D D D D D D D D D D D', 'Pair_style':'', 'Include':'','pairPath':'/projectnb/nonadmd/cedric17/proj2b_lammps/7-pair_AC4-DCA/'},
