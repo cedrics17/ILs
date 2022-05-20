@@ -39,7 +39,8 @@ Pair_Dic= { 'AC4DCAneat':{'Atoms':'1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18'
 replicaPath    = Pair_Dic[pair]['pairPath']+'replica/'
 pairPath       = Pair_Dic[pair]['pairPath']
 
-
+os.system("mkdir SingleTraj_"+pair)
+os.chdir("SingleTraj_"+pair)
 
 for i in range(0,len(temperatures),3):
     os.system("mkdir "+pair+"_"+repname+str(round(temperatures[i])))
