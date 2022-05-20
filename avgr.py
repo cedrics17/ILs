@@ -12,8 +12,7 @@ import argparse
 
 hours          = "6"
 repname        = "temperature"
-#temperatures   = [300.0, 307.595, 315.381, 323.365, 331.551, 339.945, 348.55, 357.374, 366.421, 375.697, 385.208, 394.959, 404.958, 415.209,425.72,436.497]
-temperatures   = [375.697, 404.958, 436.497]
+temperatures   = [300.0, 323.365, 348.55, 375.697, 404.958, 436.497]
 name_middle    = "_snapshot" # 750 snapshots from each trajectory
 ogpath         ='/projectnb/nonadmd/cedric17/proj2b_lammps/4-pair_P111-DCA/replica/SingleTraj_P111-DCA/'
 grname         ='averagegr'
