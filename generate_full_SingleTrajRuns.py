@@ -18,7 +18,7 @@ timestep_space = 10000
 timesteps      = np.arange(timestep_start,timestep_end+timestep_space,timestep_space)
 cores          = 8 # choose 4 8 16 28 
 snaps          = 3000
-pair= "AC4DCAsaltTFSI" #Different options are in defined in the dictionary below
+pair= "AC4DCAsaltTFSI" #Different options are defined in the dictionary below.
 
 Pair_Dic= { 'AC4DCAneat':{'Atoms':'1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18','Cores':'1 3 4 6 7 9 11 12 14 15 16 17 18', 'Drudes':'19 20 21 22 23 24 25 26 27 28 29 30 31','Cation':'1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 ','Anion': '16 17 18','Dump': 'C H C C H N C H C H C C H C C N C N D D D D D D D D D D D D D', 'FixDrude': 'C N C C N C C N C N C C N C C C C C D D D D D D D D D D D D D', 'Pair_style':'', 'Include':'','pairPath':'/projectnb/nonadmd/cedric17/proj2b_lammps/7-pair_AC4-DCA/'},
             'P111DCAneat':{'Atoms':'1 2 3 4 5 6 7 8 9 10','Cores':'1 3 5 6 7 8 9 10', 'Drudes': '11 12 13 14 15 16 17 18','Cation': '1 2 3 4 5 6 7 ','Anion':'8 9 10','Dump':'C H C H P C C N C N D D D D D D D D', 'FixDrude':'C N C N C C C C C C D D D D D D D D', 'Pair_style':'', 'Include':'','pairPath':'/projectnb/nonadmd/cedric17/proj2b_lammps/4-pair_P111-DCA/'},
