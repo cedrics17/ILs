@@ -1,8 +1,8 @@
 #Author: Cedric Salame
 #Script Name: generate_singleTraj.py
 #Date Created: May 25th 2021
-#Last Mod Date:
-#Last Modification:
+#Last Mod Date: May 20th 2022
+#Last Modification: Generalized it to generate all input files for every pair possible.
 
 #Program: Python 3
 import os
