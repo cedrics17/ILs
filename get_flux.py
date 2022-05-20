@@ -35,7 +35,23 @@ snapshots_end  = int(args.end)
 timesteps      = 500
 temp           = float(args.temperature)
 pair           = args.pair
-key            ='neat' # change if salted. There are two other options: "same salt" or "diff salt"
+
+
+
+pair_dic={"AC4DCAneat":{"catatom":9,"anatom":16,"litatom":0,"saltatom":0,"key","neat"},
+          "P111DCAneat":{"catatom":5,"anatom":8,"litatom":0"saltatom":0,"key","neat"},
+          "P101TFSIneat":{"catatom":5,"anatom":9,"litatom":0"saltatom":0},"key","neat",
+          "AC4DCAsaltDCA":{"catatom":9,"anatom":16,"litatom":19,"saltatom":0,"key","same salt"},
+          "P111DCAsaltDCA":{"catatom":5,"anatom":8,"litatom":11,"saltatom":,"key","same salt"},
+          "P101TFSIsaltDCA":{"catatom":5,"anatom":9,"litatom":14,"saltatom":15,"key","diff salt"},
+          "AC4DCAsaltTFSI":{"catatom":9,"anatom":16,"litatom":19,"saltatom":20,"key","diff salt"},
+          "AC4DCAsaltPF6":{"catatom":9,"anatom":16,"litatom":19,"saltatom":21,"key","diff salt"},
+          "AC4DCAsaltDCAhalf":{"catatom":9,"anatom":16,"litatom":19,"saltatom":0,"key","same salt"},
+          "AC4DCAsaltTFSIhalf":{"catatom":9,"anatom":16,"litatom":19,"saltatom":20,"key","diff salt"},
+          "AC4DCAsaltPF6half":{"catatom":9,"anatom":16,"litatom":19,"saltatom":21,"key","diff salt"}}
+
+key     =pair_dic[pair]['key']
+
 
 os.chdir('../') #bring this back when running superscript
 
