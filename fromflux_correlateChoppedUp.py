@@ -20,10 +20,8 @@ parser.add_argument("-e","--end", dest="end", help="last Snapshot")
 #parser.add_argument("-T","--temperature",dest="temperature",help="temperature")
 args           = parser.parse_args()
 hours          = "6"
-repname        = "temperature"
-#temperatures   = [300.0, 307.595, 315.381, 323.365, 331.551, 339.945, 348.55, 357.374, 366.421, 375.697, 385.208, 394.959, 404.958, 415.209,425.72,436.497]                                                                                                                                      
-#temperatures   = [323.365, 348.55, 375.697, 404.958, 436.497]
-temperatures   =[300.0]
+repname        = "_temperature"                                                                                                                                     
+temperatures   = [300.0, 323.365, 348.55, 375.697, 404.958, 436.497]
 name_middle    = "_snapshot" # 750 snapshots from each trajectory
 array          = []
 sum_array      = []
@@ -32,18 +30,19 @@ J              = []
 snapshots_beg  = int(args.begin)
 snapshots_end  = int(args.end)
 timesteps      = 101
-ogpath         ='/projectnb/nonadmd/cedric17/proj2b_lammps/4-pair_P111-DCA/replica/SingleTraj_P111-DCA/'
+pair           ="AC4DCAsaltTFSI" #other options: AC4DCAneat,P111DCAneat,P101TFSIneat,AC4DCAsaltDCA,P111DCAsaltDCA,P101TFSIsaltDCA,AC4DCAsaltTFSI,AC4DCAsaltPF6,AC4DCAsaltDCAhalf,AC4DCAsaltTFSIhalf,AC4DCAsaltPF6half
 
 time_array=np.arange(0,1010,10).T
-                
+
+os.chdir("SingleTraj_"+pair)
 
 for temp in temperatures:
-        os.chdir(repname+str(round(temp)))
+        os.chdir(pair+repname+str(round(temp)))
         for k in range(snapshots_beg,snapshots_end):
                 file=open("flux"+str(k)+".dat",'r').readlines()
                 count=1
                 for j in range(0,500,100):
-                        out=open(ogpath+repname+str(round(temp))+'/corr'+str(k)+"_"+str(count)+'.dat','w')
+                        out=open('corr'+str(k)+"_"+str(count)+'.dat','w')
                         
                         out.write('Time (fs)   J0.Jt ((e*Ang/fs)**2)\n')
                         corr=np.zeros((timesteps,1))
