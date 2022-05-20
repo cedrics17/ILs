@@ -43,7 +43,7 @@ time_array=de.grabtime(pair+repname+str(round(temp))+'/'+'dump'+str(snapshots_be
 os.chdir(pair+repname+str(round(temp)))
 
 for i in range(snapshots_beg,snapshots_end):
-        out=open(pair+repname+str(round(temp))+'/flux'+str(i)+'.dat','w')
+        out=open('flux'+str(i)+'.dat','w')
         out.write('Time (fs)   Jx (e*Ang/fs)   Jy (e*Ang/fs)   Jz (e*Ang/fs)\n')
 
         J=de.splitflux('dump'+str(i)+'.lammpstrj',key)
