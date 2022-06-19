@@ -22,6 +22,7 @@ bundle_count   =0
 input_array    =[]
 batch_count    =16 #or 28 or 32
 chunkSize      =10
+condaEnv       = "electro"
 pair           ="AC4DCAsaltTFSI" #other options: AC4DCAneat,P111DCAneat,P101TFSIneat,AC4DCAsaltDCA,P111DCAsaltDCA,P101TFSIsaltDCA,AC4DCAsaltTFSI,AC4DCAsaltPF6,AC4DCAsaltDCAhalf,AC4DCAsaltTFSIhalf,AC4DCAsaltPF6half
 runs           =6000
 
@@ -52,7 +53,7 @@ for i in range(0,length, batch_count):
     outfile_sh.write("module purge\n")
     outfile_sh.write("module load miniconda/4.9.2\n")
     outfile_sh.write("\n")
-    outfile_sh.write("conda activate electro\n")
+    outfile_sh.write("conda activate "+condaEnv+"\n")
     outfile_sh.write('\n')
     if bundle_count%chunkSize==0:  
         for j in range(chunkSize):
