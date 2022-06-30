@@ -24,3 +24,6 @@ After running the replica exchange simulations and considering that LAMMPS dumps
 #### 7)Copy the functions get_gr.py and get_flux.py in your general directory before the Single Trajectries of every liquid and submit bundle0.sh the rest will submit itself automatically.
 #### 8)Copy the scripts fromflux_correlateChoppedUp.py, from_chops_getAverage.py and avgr.py in your general directory before the SingleTraj directories. The correct liquid has to be added to the pair variable in all three scripts and the scripts have to run in this particular order. 
 #### 9) Calculate the conductivity using the calc_conductivity.py script after doing the necessary edits related to the nature of the liquid. 
+#### 10) Plot the data generated above: Charge flux correlation functions for every temperature, g(r) for every combination of center atoms and temperature as well as the conductivity vs temperature plots. 
+
+### The end
