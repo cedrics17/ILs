@@ -22,4 +22,5 @@ After running the replica exchange simulations and considering that LAMMPS dumps
 #### 5)Do the edits to the heading of check_SingleTraj.py (snaps if necessary and pair) and run it to check if all runs were properly terminated.Check the submission scripts generated (they start with the prefix reSub, and if there are inputs in the inputs line, submit the reSub scripts. 
 #### 6)Generate the post-processing scripts by doing the edits of the heading of generate_general.py (the pair, your conda environment to the condaEnv variable and the number of cores to batch_count variable) and running the script. It will create a directory with the prefix bundles_ followed by the name of your pair within the SingleTraj directory. 
 #### 7)Copy the functions get_gr.py and get_flux.py in your general directory before the Single Trajectries of every liquid and submit bundle0.sh the rest will submit itself automatically.
-#### 8)
+#### 8)Copy the scripts fromflux_correlateChoppedUp.py, from_chops_getAverage.py and avgr.py in your general directory before the SingleTraj directories. The correct liquid has to be added to the pair variable in all three scripts and the scripts have to run in this particular order. 
+#### 9) Calculate the conductivity using the calc_conductivity.py script after doing the necessary edits related to the nature of the liquid. 
