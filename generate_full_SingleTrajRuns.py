@@ -36,7 +36,7 @@ Pair_Dic= { 'AC4DCAneat':{'Atoms':'1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18'
             'AC4DCAsaltPF6half':{'Atoms': '1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21','Cores': '1 3 4 6 7 9 11 12 14 15 16 17 18 20 21', 'Drudes':'22 23 24 25 26 27 28 29 30 31 32 33 34 35 36','Cation':'1 2 3 4 5 6 7 8 9 10 11 12 13 14 15','Anion':'16 17 18','Dump': 'C H C C H N C H C H C C H C C N C N Li F P D D D D D D D D D D D D D D D', 'FixDrude':'C N C C N C C N C N C C N C C C C C N C C D D D D D D D D D D D D D D D', 'Pair_style':'coul/tt 4 12', 'Include': 'include /projectnb/nonadmd/cedric17/proj2b_lammps/7-pair_AC4-DCA/3-LiPF6/pair-tt.lmp','pairPath':'/projectnb/nonadmd/cedric17/proj2b_lammps/7-pair_AC4-DCA/3-LiPF6/halfmolar/'}}
  
 
-replicaPath    = Pair_Dic[pair]['pairPath']+'replica/'
+replicaPath    = Pair_Dic[pair]['pairPath']+'replica/traj_reordered/'
 pairPath       = Pair_Dic[pair]['pairPath']
 
 os.system("mkdir SingleTraj_"+pair)
