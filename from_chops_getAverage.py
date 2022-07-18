@@ -7,7 +7,7 @@
 #Program: Python 3 
 import os
 import numpy as np
-import withdrude_correlate as de  
+import correlate_gofr as de  
 
 #Description: This script will calculate correlation functions for every temperature and trajectory and average it on a temperature basis. It also returns the conductivity 
 hours          = "6"
