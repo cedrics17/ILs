@@ -18,12 +18,19 @@ grname         ='averagegr'
 pair           = []
 ani            =[]
 cat            =[]
+litani=[]
+litcat=[]
+litlit=[]
+saltcat=[]
+saltani=[]
+saltlit=[]
+saltsalt=[]
 bins           = 200
 snapshots_beg  = 1
 snapshots_end  = 6001
 timesteps      = 501
 dist=[]
-pair="P111DCAneat" #change depending on the nature of the liquid
+liquid="P111DCAneat" #change depending on the nature of the liquid
 
 pair_dic={"AC4DCAneat":{"catatom":9,"anatom":16,"litatom":0,"saltatom":0,"key":"neat"},
           "P111DCAneat":{"catatom":5,"anatom":8,"litatom":0,"saltatom":0,"key":"neat"},
@@ -38,20 +45,20 @@ pair_dic={"AC4DCAneat":{"catatom":9,"anatom":16,"litatom":0,"saltatom":0,"key":"
           "AC4DCAsaltPF6half":{"catatom":9,"anatom":16,"litatom":19,"saltatom":21,"key":"diff salt"}}
 
 
-catatom        = pair_dic[pair]["catatom"]
-anatom         = pair_dic[pair]["anatom"]
-litatom        = pair_dic[pair]["litatom"]
-saltatom       = pair_dic[pair]["saltatom"]
-key            = pair_dic[pair]["key"]
+catatom        = pair_dic[liquid]["catatom"]
+anatom         = pair_dic[liquid]["anatom"]
+litatom        = pair_dic[liquid]["litatom"]
+saltatom       = pair_dic[liquid]["saltatom"]
+key            = pair_dic[liquid]["key"]
 
-os.chdir("SingleTraj_"+pair)
+os.chdir("SingleTraj_"+liquid)
 
 for temp in temperatures:
     out=open(grname+str(int(round(temp)))+'.dat','w')
     if key=="neat":
         out.write('Distance (A)    Cat-Ani    Ani-Ani    Cat-Cat\n')
         count=1
-        file=open(pair+repname+str(int(round(temp)))+"/gr1.dat",'r').readlines()
+        file=open(liquid+repname+str(int(round(temp)))+"/gr1.dat",'r').readlines()
         for m in range(1,len(file)):
             pair.append(float(file[m].strip().split()[1]))
             ani.append(float(file[m].strip().split()[2]))
@@ -64,7 +71,7 @@ for temp in temperatures:
         cat=[]
         ani=[]
         for i in range(2,snapshots_end):
-            file=open(pair+repname+str(int(round(temp)))+"/gr"+str(i)+".dat",'r').readlines()
+            file=open(liquid+repname+str(int(round(temp)))+"/gr"+str(i)+".dat",'r').readlines()
             for f in range(1,len(file)):
                 pair.append(float(file[f].strip().split()[1]))
                 ani.append(float(file[f].strip().split()[2]))
