@@ -7,7 +7,7 @@
 #Program: Python 3
 import os
 import numpy as np
-import withdrude_correlate as de
+import correlate_gofr as de
 import argparse
 
 hours          = "6"
