@@ -7,7 +7,7 @@
 #Program: Python 3 
 import os
 import numpy as np
-import withdrude_correlate as de  
+import correlate_gofr as de  
 import argparse
 
 #Description: This script will calculate correlation functions for a bundle of trajectories determined by the input flags.
