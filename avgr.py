@@ -140,7 +140,7 @@ for temp in temperatures:
 
             print(count)
         for i in range(len(sumpair)):
-            out.write(str(dist[i])+'    '+str(sumpair[i]/float(count))+'    '+str(sumani[i]/float(count))+'    '+str(sumcat[i]/float(count))'   '+str(sumlitani[i]/float(count))+'   '+str(sumlitcat[i]/float(count))+'   '+str(sumlitlit[i]/float(count))+'\n')
+            out.write(str(dist[i])+'    '+str(sumpair[i]/float(count))+'    '+str(sumani[i]/float(count))+'    '+str(sumcat[i]/float(count))+'   '+str(sumlitani[i]/float(count))+'   '+str(sumlitcat[i]/float(count))+'   '+str(sumlitlit[i]/float(count))+'\n')
         out.close()
         print('Done with '+str(temp))
         dist=[]
