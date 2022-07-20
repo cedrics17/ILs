@@ -83,7 +83,7 @@ for i in range(0,len(temperatures),3):
         outfile_inp.write("\n")
         outfile_inp.write("special_bonds lj/coul 0.0 0.0 0.5\n")
         outfile_inp.write("\n")
-        outfile_inp.write("pair_style hybrid/overlay lj/cut/coul/long 12.0 12.0 coul/long/cs 12.0 thole 2.600 12.0\n")
+        outfile_inp.write("pair_style hybrid/overlay lj/cut/coul/long 12.0 12.0 coul/long/cs 12.0 thole 2.600 12.0"+Pair_Dic[pair]['Pair_style"]+"\n")
         outfile_inp.write("pair_modify tail yes\n")
         outfile_inp.write("kspace_style pppm 1.0e-5\n")
         outfile_inp.write("\n")
