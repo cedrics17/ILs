@@ -94,7 +94,7 @@ for temp in temperatures:
     if key=="same salt":
         out.write('Distance (A)    Cat-Ani    Ani-Ani    Cat-Cat    Li-Ani   Li-Cat   Li-Li\n')
         count=1
-        file=open(ogpath+repname+str(int(round(temp)))+"/gr1.dat",'r').readlines()
+        file=open(liquid+repname+str(int(round(temp)))+"/gr1.dat",'r').readlines()
         for m in range(1,len(file)):
             pair.append(float(file[m].strip().split()[1]))
             ani.append(float(file[m].strip().split()[2]))
@@ -116,7 +116,7 @@ for temp in temperatures:
         litcat=[]
         litlit=[]
         for i in range(2,snapshots_end):
-            file=open(ogpath+repname+str(int(round(temp)))+"/gr"+str(i)+".dat",'r').readlines()
+            file=open(liquid+repname+str(int(round(temp)))+"/gr"+str(i)+".dat",'r').readlines()
             for f in range(1,len(file)):
                 pair.append(float(file[f].strip().split()[1]))
                 ani.append(float(file[f].strip().split()[2]))
@@ -148,7 +148,7 @@ for temp in temperatures:
     if key=="diff salt":
         out.write('Distance (A)    Cat-Ani    Ani-Ani    Cat-Cat    Li-Ani   Li-Cat   Li-Li   Salt-Cat   Salt-Ani    Salt-Salt   Salt-Lit\n')
         count=1
-        file=open(ogpath+repname+str(int(round(temp)))+"/gr1.dat",'r').readlines()
+        file=open(liquid+repname+str(int(round(temp)))+"/gr1.dat",'r').readlines()
         for m in range(1,len(file)):
             pair.append(float(file[m].strip().split()[1]))
             ani.append(float(file[m].strip().split()[2]))
@@ -182,7 +182,7 @@ for temp in temperatures:
         saltlit=[]
         saltsalt=[]
         for i in range(2,snapshots_end):
-            file=open(ogpath+repname+str(int(round(temp)))+"/gr"+str(i)+".dat",'r').readlines()
+            file=open(liquid+repname+str(int(round(temp)))+"/gr"+str(i)+".dat",'r').readlines()
             for f in range(1,len(file)):
                 pair.append(float(file[f].strip().split()[1]))
                 ani.append(float(file[f].strip().split()[2]))
