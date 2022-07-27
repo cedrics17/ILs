@@ -107,7 +107,7 @@ for temp in temperatures:
         sumani=ani.copy()
         sumcat=cat.copy()
         sumlitani=litani.copy()
-        sumlitcat=licat.copy()
+        sumlitcat=litcat.copy()
         sumlitlit=litlit.copy()
         pair=[]
         cat=[]
@@ -198,7 +198,7 @@ for temp in temperatures:
             sumani=ani.copy()
             sumcat=cat.copy()
             sumlitani=litani.copy()
-            sumlitcat=licat.copy()
+            sumlitcat=litcat.copy()
             sumlitlit=litlit.copy()
             sumsaltcat=saltcat.copy()
             sumsaltani=saltani.copy()
