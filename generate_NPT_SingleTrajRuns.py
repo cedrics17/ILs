@@ -113,6 +113,9 @@ for i in range(0,len(temperatures),3):
         outfile_inp.write("variable PBAR equal 1.0\n")
         outfile_inp.write("#velocity all create ${TK} 12345\n") # no need considering that we have the initial velos in the dump file 
         outfile_inp.write("\n")
+        outfile_inp.write("compute TATOM ATOMS temp\n")
+        outfile_inp.write("compute TDRUDE all temp/drude\n")
+        outfile_inp.write("\n")
         outfile_inp.write("fix DTDIR all drude/transform/direct\n")
         outfile_inp.write("fix TPSTAT ATOMS npt temp ${TK} ${TK} 100 iso ${PBAR} ${PBAR} 1000\n")
         outfile_inp.write("fix_modify TPSTAT temp TATOM press thermo_press\n")
@@ -125,8 +128,6 @@ for i in range(0,len(temperatures),3):
         outfile_inp.write("\n")
         outfile_inp.write("reset_timestep 0\n")
         outfile_inp.write("\n")
-        outfile_inp.write("compute TATOM ATOMS temp\n")
-        outfile_inp.write("compute TDRUDE all temp/drude\n")
         outfile_inp.write("\n")
         outfile_inp.write("dump TRAJ all custom 10 dump"+str(j)+".lammpstrj id mol type element q x y z ix iy iz vx vy vz\n") # dumping freq
         outfile_inp.write("dump_modify TRAJ sort id &\n")
