@@ -128,7 +128,6 @@ for i in range(0,len(temperatures),3):
         outfile_inp.write("\n")
         outfile_inp.write("reset_timestep 0\n")
         outfile_inp.write("\n")
-        outfile_inp.write("\n")
         outfile_inp.write("dump TRAJ all custom 10 dump"+str(j)+".lammpstrj id mol type element q x y z ix iy iz vx vy vz\n") # dumping freq
         outfile_inp.write("dump_modify TRAJ sort id &\n")
         outfile_inp.write("            element "+Pair_Dic[pair]['Dump']+"\n")
