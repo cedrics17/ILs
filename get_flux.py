@@ -57,16 +57,36 @@ os.chdir('../') #bring this back when running superscript
 
 time_array=de.grabtime(pair+repname+str(round(temp))+'/'+'dump'+str(snapshots_beg)+'.lammpstrj')
 os.chdir(pair+repname+str(round(temp)))
+os.mkdir('fluxes')
 
 for i in range(snapshots_beg,snapshots_end):
-        out=open('flux'+str(i)+'.dat','w')
-        out.write('Time (fs)   Jx (e*Ang/fs)   Jy (e*Ang/fs)   Jz (e*Ang/fs)\n')
-
-        J=de.splitflux('dump'+str(i)+'.lammpstrj',key)
+        outJ=open('flux'+str(i)+'.dat','w')
+        outJcat=open('fluxes/fluxCat'+str(i)+'.dat','w')
+        outJsalt=open('fluxes/fluxSalt'+str(i)+'.dat','w')
+        outJani=open('fluxes/fluxAni'+str(i)+'.dat','w')
+        outJlith=open('fluxes/fluxLith'+str(i)+'.dat','w')
+        outJ.write('Time (fs)   Jx (e*Ang/fs)   Jy (e*Ang/fs)   Jz (e*Ang/fs)\n')
+        outJcat.write('Time (fs)   Jx (e*Ang/fs)   Jy (e*Ang/fs)   Jz (e*Ang/fs)\n')
+        outJani.write('Time (fs)   Jx (e*Ang/fs)   Jy (e*Ang/fs)   Jz (e*Ang/fs)\n')
+        outJsalt.write('Time (fs)   Jx (e*Ang/fs)   Jy (e*Ang/fs)   Jz (e*Ang/fs)\n')
+        ouJlith.write('Time (fs)   Jx (e*Ang/fs)   Jy (e*Ang/fs)   Jz (e*Ang/fs)\n')
+        J,Jcat,Jani,Jsalt,Jlith=de.splitflux('dump'+str(i)+'.lammpstrj',key)
         J=np.array(J)
+        Jcat=np.array(Jcat)
+        Jani=np.array(Jani)
+        Jsalt=np.array(Jsalt)
+        Jlith=np.array(Jlith)
         print(len(J))
         for j in range(len(J)):
-                out.write(str(time_array[j])+'    '+str(J[j,0])+'   '+str(J[j,1])+'   '+str(J[j,2])+'   \n')
-        out.close()
+                outJ.write(str(time_array[j])+'    '+str(J[j,0])+'   '+str(J[j,1])+'   '+str(J[j,2])+'   \n')
+                outJcat.write(str(time_array[j])+'    '+str(Jcat[j,0])+'   '+str(Jcat[j,1])+'   '+str(Jcat[j,2])+'   \n')
+                outJani.write(str(time_array[j])+'    '+str(Jani[j,0])+'   '+str(Jani[j,1])+'   '+str(Jani[j,2])+'   \n')
+                outJsalt.write(str(time_array[j])+'    '+str(Jsalt[j,0])+'   '+str(Jsalt[j,1])+'   '+str(Jsalt[j,2])+'   \n')
+                outJlith.write(str(time_array[j])+'    '+str(Jlith[j,0])+'   '+str(Jlith[j,1])+'   '+str(Jlith[j,2])+'   \n')
+        outJ.close()
+        outJcat.close()
+        outJani.close()
+        outJsalt.close()
+        outJlith.close()
         
 
